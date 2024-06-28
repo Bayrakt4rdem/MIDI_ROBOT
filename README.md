@@ -138,13 +138,14 @@ The STL files are for manufacturing the necessary parts with a 3D printer. <br>
  AŞAĞISI YANLIŞ BURASI DÜZENLENECEK AYARLARDAN BAKARAK
  
 The recommended settings for slicing the STL files for PLA material are as follows: <br>
+3D Printer Model: Creality CR-6 SE 
 Material: PLA filament <br>
 Nozzle / build plate temperature: 210 / 65 degrees <br>
 Layer height: 0.2 mm <br>
-Initial layer height: 0.3 mm <br>
+Initial layer height: 0.2 mm <br>
 Line width: 0.4 mm <br>
 Wall line count: 3 <br>
-Infill density: 40.0% <br>
+Infill density: 30.0% <br>
 Infill pattern: Lines <br>
 Print speed: 70.0 mm/s <br>
 Infill speed: 100.0 mm/s <br>
@@ -152,24 +153,25 @@ Wall speed: 35.0 mm/s <br>
 Initial layer speed: 35.0 mm/s <br>
 Fan: ON <br>
 Supports: ON / Normal 45 degree overhang <br>
-Adhesion type: Brim <br>
+Adhesion type: NO <br>
 
 The recommended settings for slicing the STL files for TPU material are as follows: <br>
+3D Printer Model: Ender 3 V2 (modified for direct drive extrusion)
 Material: TPU filament <br>
-Nozzle / build plate temperature: 210 / 65 degrees <br>
+Nozzle / build plate temperature: 215 / 65 degrees <br>
 Layer height: 0.2 mm <br>
-Initial layer height: 0.3 mm <br>
-Line width: 0.4 mm <br>
+Initial layer height: 0.2 mm <br>
+Line width: 0.8 mm <br>
 Wall line count: 3 <br>
-Infill density: 40.0% <br>
+Infill density: 100.0% <br>
 Infill pattern: Lines <br>
-Print speed: 70.0 mm/s <br>
-Infill speed: 100.0 mm/s <br>
-Wall speed: 35.0 mm/s <br>
+Print speed: 50.0 mm/s <br>
+Infill speed: 50.0 mm/s <br>
+Wall speed: 25.0 mm/s <br>
 Initial layer speed: 35.0 mm/s <br>
 Fan: ON <br>
-Supports: ON / Normal 45 degree overhang <br>
-Adhesion type: Brim <br>
+Supports: OFF / Normal 45 degree overhang <br>
+Adhesion type: NO <br>
 
 ## Power Circuitry
 
@@ -184,8 +186,7 @@ Basically in our power circuitry we have 18V, 12.8V, 5V, 3.3V power lines.
 
 The PCB Files and Electronic Schematics can be found under the PCB&Schematics/ directory.  
 The Fusion 360 software is used while designing the PCB circuit. <br>
-Below is the link to the up to date files: <br>
-[LİNK EKLENECEK]d <br>
+
 The PCB is designed as single layer, in order to make fabrication process easier. <br>
 But due to size limitations of the PCB, not all the wiring fit into one layer. <br>
 As a result there is two options: <br>
