@@ -199,15 +199,13 @@ Second option: Fabricate the PCB as a two layer one. <br>
 
 ### Software and Versions
 ### Installing Guide
+To connect to Raspberry Pi 4(RPi4), one should connect RPi4 and the PC to a network with a name **midiwifi**. Password for this network should be **midi1234**. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh midibot@local.bash`. The password for RPi4 is **midi1234**. To install the MIDI, you should clone into `https://github.com/momeryigit/ME462-MIDI/tree/omar-test`, go inside `Raspi_files`, and run `setup_pi.bash`. <br>
+After installation, you can just go inside `romer_midibot/Examples` and run the scripts for testing.
 ### Docker Setup Instructions
-To connect to Raspberry Pi 4(RPi4), one should connect RPi4 and the PC to a network with a name **midiwifi**. Password for this network should be **midi1234**. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh midibot@local.bash`. The password for RPi4 is **midi1234**. Current OS in RPi4 is **Raspberry Pi OS**. However, the docker is employed in MIDI. <br>
 To understand and install docker, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
 For just installing the docker: [Starting from 0:39](https://www.youtube.com/watch?v=SAMPOK_lazw&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe&index=2) <br>
-MIDI's docker file can be reached [here-link değişecek](https://github.com/momeryigit/ME462-MIDI/blob/main/docker_trial/Dockerfile). <br>
-As can be seen from MIDI's dockerfile, it is customized. 
-Camera and other stuff... <br>
+MIDI's docker file can be reached [here](https://github.com/momeryigit/ME462-MIDI/blob/omar-test/Raspi_files/Docker_files/Dockerfile). <br>
 <br>
-After installing the docker into Raspberry Pi 4, run a docker container and attach to it (or use `exec -it`). `dev_ws` should be accesible. To check this, go to root directory with `cd /`. Then list all the directories with `ls`. Now, go into developer workspace with `cd dev_ws`.
 ### Rasberry Pi Pico/ESP
 MIDI has Raspberry Pi Pico W microcontroller. MIDI can be used with any microcontroller(ESP32) that can be coded in MicroPython. <br>
 To flash MicroPython into Pico W, this [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/3) could be followed. After flashing MicroPython, the provided scripts should be uploded into Pico W from [here](https://github.com/momeryigit/ME462-MIDI/tree/omar-test/sarp-esp).
