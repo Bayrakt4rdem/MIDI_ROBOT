@@ -199,7 +199,13 @@ Second option: Fabricate the PCB as a two layer one. <br>
 
 ### Software and Versions
 ### Installing Guide
-### Docker Setup Instructions)
+### Docker Setup Instructions
+
+In MIDI, docker is employed. To understand and install docker, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
+For just installing the docker: [Starting from 0:39](https://www.youtube.com/watch?v=SAMPOK_lazw&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe&index=2) <br>
+MIDI's docker file can be reached [here-link değişecek](https://github.com/momeryigit/ME462-MIDI/blob/main/docker_trial/Dockerfile). <br>
+As can be seen from MIDI's dockerfile, it is customized. 
+Camera and other stuff...
 ### Rasberry Pi Pico/ESP
 ### API
 
