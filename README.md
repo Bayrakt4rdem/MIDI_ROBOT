@@ -200,12 +200,14 @@ Second option: Fabricate the PCB as a two layer one. <br>
 ### Software and Versions
 ### Installing Guide
 ### Docker Setup Instructions
-
-In MIDI, docker is employed. To understand and install docker, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
+To connect to Raspberry Pi 4(RPi4), one should connect RPi4 and the PC to a network with a name **midiwifi**. Password for this network should be **midi1234**. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh midibot@local.bash`. The password for RPi4 is **midi1234**. Current OS in RPi4 is **Raspberry Pi OS**. However, the docker is employed in MIDI. <br>
+To understand and install docker, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
 For just installing the docker: [Starting from 0:39](https://www.youtube.com/watch?v=SAMPOK_lazw&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe&index=2) <br>
 MIDI's docker file can be reached [here-link değişecek](https://github.com/momeryigit/ME462-MIDI/blob/main/docker_trial/Dockerfile). <br>
 As can be seen from MIDI's dockerfile, it is customized. 
-Camera and other stuff...
+Camera and other stuff... <br>
+<br>
+After installing the docker into Raspberry Pi 4, 
 ### Rasberry Pi Pico/ESP
 ### API
 
