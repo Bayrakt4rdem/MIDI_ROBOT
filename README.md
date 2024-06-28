@@ -202,8 +202,7 @@ Second option: Fabricate the PCB as a two layer one. <br>
 To connect to Raspberry Pi 4(RPi4), one should connect RPi4 and the PC to a network with a name **midiwifi**. Password for this network should be **midi1234**. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh midibot@local.bash`. The password for RPi4 is **midi1234**. To install the MIDI, you should clone into `https://github.com/momeryigit/ME462-MIDI/tree/omar-test`, go inside `Raspi_files`, and run `setup_pi.bash`. <br>
 After installation, you can just go inside `romer_midibot/Examples` and run the scripts for testing.
 ### Docker Setup Instructions
-To understand and install docker, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
-For just installing the docker: [Starting from 0:39](https://www.youtube.com/watch?v=SAMPOK_lazw&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe&index=2) <br>
+To understand and install docker manually, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
 MIDI's docker file can be reached [here](https://github.com/momeryigit/ME462-MIDI/blob/omar-test/Raspi_files/Docker_files/Dockerfile). <br>
 <br>
 ### Rasberry Pi Pico/ESP
