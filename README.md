@@ -209,6 +209,8 @@ Camera and other stuff... <br>
 <br>
 After installing the docker into Raspberry Pi 4, run a docker container and attach to it (or use `exec -it`). `dev_ws` should be accesible. To check this, go to root directory with `cd /`. Then list all the directories with `ls`. Now, go into developer workspace with `cd dev_ws`.
 ### Rasberry Pi Pico/ESP
+MIDI has Raspberry Pi Pico W microcontroller. MIDI can be used with any microcontroller(ESP32) that can be coded in MicroPython. <br>
+To flash MicroPython into Pico W, this [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/3) could be followed. After flashing MicroPython, the provided scripts should be uploded into Pico W from [here](https://github.com/momeryigit/ME462-MIDI/tree/omar-test/sarp-esp).
 ### API
 
 
