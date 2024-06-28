@@ -207,7 +207,7 @@ MIDI's docker file can be reached [here-link değişecek](https://github.com/mom
 As can be seen from MIDI's dockerfile, it is customized. 
 Camera and other stuff... <br>
 <br>
-After installing the docker into Raspberry Pi 4, 
+After installing the docker into Raspberry Pi 4, run a docker container and attach to it (or use `exec -it`). `dev_ws` should be accesible. To check this, go to root directory with `cd /`. Then list all the directories with `ls`. Now, go into developer workspace with `cd dev_ws`.
 ### Rasberry Pi Pico/ESP
 ### API
 
