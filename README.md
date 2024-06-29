@@ -88,6 +88,7 @@ To build the model that provided, one will need diverse sensors and components. 
 - [8 Strip Led x 2](https://www.robolinkmarket.com/neopixel-8li-serit)
 - [100 μf Capacitor x 1 ](https://www.robotistan.com/25v-100uf-capacitor)
 - [10 μf Capacitor x 2 ](https://www.robotistan.com/10-uf-16-v-elektrolit-kondansator)
+- [20 pieces Neopixel Led strip x1](https://market.samm.com/adafruit-neopixel-dijital-rgb-led-serit-siyah-60-led-1m)
 
   Note that other NEMA17 models or other power supply models may be selected. Still, battery must be adjusted as 18 Volts.
 
