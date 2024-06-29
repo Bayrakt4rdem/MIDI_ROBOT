@@ -206,15 +206,16 @@ Second option: Fabricate the PCB as a two layer one. <br>
 
 ### Software and Versions
 ### Installing Guide
-To connect to Raspberry Pi 4(RPi4), one should connect RPi4 and the PC to a network with a name **midiwifi**. Password for this network should be **midi1234**. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh midibot@local.bash`. The password for RPi4 is **midi1234**. To install the MIDI, you should clone into `https://github.com/momeryigit/ME462-MIDI/tree/omar-test`, go inside `Raspi_files`, and run `setup_pi.bash`. <br>
-After installation, you can just go inside `romer_midibot/Examples` and run the scripts for testing.
-### Docker Setup Instructions
-To understand and install docker manually, one can follow: [Docker for Robotics by Articulated Robotics](https://www.youtube.com/watch?v=XcJzOYe3E6M&list=PLunhqkrRNRhaqt0UfFxxC_oj7jscss2qe) <br>
-MIDI's docker file can be reached [here](https://github.com/momeryigit/ME462-MIDI/blob/omar-test/Raspi_files/Docker_files/Dockerfile). <br>
+This project uses a Raspberry Pi 4b as the main computer of the robot. Flash the latest Raspberry Pi OS 64-bit version onto your sd card. We recommend using the **PiImager**. Make sure to configure your image to your needs (enable SSH, set wlan key and password, setup username and password). Flash the sd card, insert it into your Pi and power it on. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh pi@<yourusername>.local`. The console will ask for your password, enter it. In order to setup the Pi, you should clone this repo into your home adress using `git clone`, after the files are cloned go inside the `MUST BE CHANGED AFTER FILES ARE MOVED HERE`. Inside the `Raspi_Files` folder give execution right to the setup file using, `chmod +x setup_pi.bash` and then relax :) the script will take care of all the Pi configuration, docker installation, building of the docker container, adding necessesary configs modifications etc. Feel free to inspect the bash script. <br>
+**Important Note:** this script adds a function to your `.bashrc` such that everytime you ssh into your Pi the project docker container opens up. You can modify your `.bashrc` file to change this behaviour as needed.  <br>
+After the script the Pi will reset itself, you can just go inside `romer_midibot/Examples (MIGHT CHANGE)` and try some examples. Provided that you pip installed the projects python package. See below for that. <br>
+### Why Use Docker?
+We have opted with using a Docker image because it allows for end-users like you to get right into the action with a ready to use image with all required dependencies of our project pre built into it. One more advantage of this is even if you are not running on a RPi 4 you can still use the Dockerfile provided in **Docker_files** folder to build the ready to use image and get started on whatever software you are running. If you want to add functionality just modify the docker file and rebuild it again.
 <br>
 ### Rasberry Pi Pico/ESP
 MIDI has Raspberry Pi Pico W microcontroller. MIDI can be used with any microcontroller(ESP32) that can be coded in MicroPython. <br>
 To flash MicroPython into Pico W, this [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/3) could be followed. After flashing MicroPython, the provided scripts should be uploded into Pico W from [here](https://github.com/momeryigit/ME462-MIDI/tree/omar-test/sarp-esp).
+
 
 ### API
 Midibot's API is open-source and published on PYPI (see the latest version [here](https://pypi.org/project/romer-midibot/)). It requires Python 3.6 or newer and `pyserial`.
