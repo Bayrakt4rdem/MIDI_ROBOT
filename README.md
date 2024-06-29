@@ -1,4 +1,7 @@
 # MIDI ROBOT
+<p align="center">
+<img src="https://github.com/Bayrakt4rdem/MIDI_ROBOT/blob/main/Pictures/ASSEMBLY_EB_alternative%20v1121.png" width=70% height=70%>
+</p>
 
 ###### *Built for:*
 - METU ME Department ME462 Capstone Project
