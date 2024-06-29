@@ -101,7 +101,8 @@ To build the model that provided, one will need diverse sensors and components. 
 - [M3 16mm Screw x 30](https://www.amazon.com/Phillips-Countersunk-Machine-Screws-100pcs/dp/B018RSUVFU)   
 - [M4 16mm Screw x 30](https://www.amazon.com/Phillips-Machine-Screws-Metric-Thread/dp/B01HF7BLIA)   
 - [M3 Nuts x 30](https://www.robotistan.com/m3-somun-50-adet)   
-- [M4 Nuts x 30](https://www.robotistan.com/m4-somun)   
+- [M4 Nuts x 30](https://www.robotistan.com/m4-somun)
+- Bearings in specified dimensions in assembly step file.
 
   Note that sigma profiles are sold as whole 4-6 meters. Buying one and cutting in proper dimensions is necessary.
 
