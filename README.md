@@ -105,27 +105,50 @@ To build the model that provided, one will need diverse sensors and components. 
   Note that sigma profiles are sold as whole 4-6 meters. Buying one and cutting in proper dimensions is necessary.
 
 ### Printed Parts
-
-To make the MIDI robot more accessible and easy to replicate, most of the parts are suitable for 3D printing. All parts can be reached from below links:
-
-- [Main Assembly](https://a360.co/3XIiJEC)
-- [Airless Tire x 2](https://a360.co/45ATHcI)
-- [Wheel Caster x 4](https://a360.co/45ATHcI)
-- [Wheel Connector x 3](https://a360.co/4bb6Udq)
-- [Side Tire Part x 2](https://a360.co/3RF8P2N)
-- [Sigma Holder x 8](https://a360.co/3RIavc6)
-- [Back Tire Part x 1](https://a360.co/3z8LiAY)
-- [Bumpers x 4](https://a360.co/3XACzlq)
-- [Front Tires x 2](https://a360.co/4biU4dd)
-- [Plexy Holders x 16](https://a360.co/45EZhdV)
-- [Sigma Plugging Element x 8](https://a360.co/3VFlunN)
-- [Ultrasonic Holder Element x 4](https://a360.co/3z8LKPG)
-- [Lidar Platform x 3](https://a360.co/3KY62yg)
-- [Lidar Cage Holder x 4](https://a360.co/3xCmzEI)
-- [Plexy Base x 2](https://a360.co/3L1k55O) Bases for all floors are designed for plexy material and to be cut from laser - cutter. Still, one can change the material.
-- [Casings for the components x 1](https://a360.co/3xvUAqk) Casings for the PCBs, UPS, Rasberry Pi and Makita are given as a single.
-
+To make the MIDI robot more accessible and easy to replicate, most of the parts are suitable for 3D printing.    
+The production files can be found under the /CAD_files directory.   
+The STEP files are for further development and editing the model in any CAD environment. <br>
+The STL files are for manufacturing the necessary parts with a 3D printer. <br>
+ <br>
+ 
 Note that soldering equipment will also be needed.
+Below is the list of all the printed parts: 
+
+1. Led casing part 1 x2 // CAD file name: Led_casing_part1
+1. Led casing part 2 x2 // CAD file name: Led_casing_part2
+1. Makita holder x1 // CAD file name: Makita_holder
+1. Raspbery Pi holder bottom part x1 // CAD file name: Rasp_pi_holder_bottom
+1. Raspberry Pi holder top part x1 // CAD file name: Rasp_pi_holder_top
+1. UPS holder x1 // CAD file name: UPSholder
+1. Ultrasonic sensor holders x4 // CAD file name: Ultrasonic_holder
+1. Bumper x4 // CAD file name: bumper
+1. Button box x1 // CAD file name: button_holder
+1. Camera holder x1 // CAD file name: camera_holder
+1. Rim caster tire x4 // CAD file name: castertire_rim_v1
+1. Alternative for caster tire x4 // CAD file name: castertire_v1
+1. Alternative for caster tire x4 // CAD file name: castertire_v2
+1. Alternative for caster tire x4 // CAD file name: castertire_v3
+1. Alternative for caster tire x4 // CAD file name: castertire_v4
+1. Alternative for caster tire x4 // CAD file name: castertire_v5
+1. Main PCB holder x1 // CAD file name: mainPCBholder
+1. Main tire alternative rim x2 // CAD file name: maintire_rim_v1
+1. Main tire alternative rim x2 // CAD file name: maintire_rim_v2
+1. Main tire alternative x2 // CAD file name: maintire_v1
+1. Main tire alternative x2 // CAD file name: maintire_v2
+1. Sigma sensor and modular holder connection x16 // CAD file name: modular_sigma_connections
+1. Plexy holders x8 // CAD file name: plexy_holder
+1. Power PCB  holder x1 // CAD file name: powerPCBholder
+1. Sigma corner connection x8 // CAD file name: sigma_corner_connection
+1. Alternative sigma corner connection x8// CAD file name: sigma_corner_connection_previous
+1. Spring version 1 x4 // CAD file name: spring_v1
+1. Spring version 2 x4 // CAD file name: spring_v2
+1. Wheel holder part x3 // CAD file name: tire_holder
+1. Side wheel gear 1 // CAD file name: wheel_holder_gear1
+1. Side wheel gear 2 // CAD file name: wheel_holder_gear2
+1. Side wheel carrying assembly part 1 x2 // CAD file name: Wheel_holder_part1
+1. Side wheel carrying assembly part 2 x2 // CAD file name: wheel_holder_part2
+1. Back wheel carrying assembly x1 // CAD file name: Back_wheel_holder
+1. Caster tire holder x4 // CAD file name: Caster_tire_connectors
 
 ## Printing Settings for 3D Printed Parts
 
@@ -140,7 +163,6 @@ The production files can be found under the /CAD_files directory.
 The STEP files are for further development and editing the model in any CAD environment. <br>
 The STL files are for manufacturing the necessary parts with a 3D printer. <br>
  <br>
- AŞAĞISI YANLIŞ BURASI DÜZENLENECEK AYARLARDAN BAKARAK
  
 The recommended settings for slicing the STL files for PLA material are as follows: <br>
 3D Printer Model: Creality CR-6 SE 
@@ -199,7 +221,23 @@ Easier option: Fabricate only the top layer as a single layer PCB and make addit
 (less than 10 additional airwires are  necessary). <br>
 Second option: Fabricate the PCB as a two layer one. <br>
 
-### Assembly Guide
+### Assembly Guideline
+
+1. Cut the sigma aluminum profiles in given lenghts.
+1. Insert the sigma modular holders into specific positions on sigma slots, as you wish.
+1. Insert the led casings into the two sides of the sigmas.
+1. Connect the sigma aluminums using sigma corner connections and obtain a rectangular sigma box.
+1. Assemble the side wheel holder assembly, insert gearbox inside and mount the stepper motors.
+1. Connect the side wheel assembly to the main sigma body using wheel holder part.
+1. Connect the back wheel carrying assembly to the main sigma body using wheel holder part.
+1. Insert the caster tire holders and connect the caster tires into them.
+1. Connect the main wheels.
+1. Insert the springs on above wheels.
+1. Mount the plexy plates on both floors.
+1. Insert sensors and components using their own casings and holders.
+1. Make the necessary cablings and check the circuit using a multimeter.
+1. Now you can power up your robot and start HAVING FUN!
+
 
 ## Software Documentation
 
