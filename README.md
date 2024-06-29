@@ -209,7 +209,197 @@ MIDI's docker file can be reached [here](https://github.com/momeryigit/ME462-MID
 ### Rasberry Pi Pico/ESP
 MIDI has Raspberry Pi Pico W microcontroller. MIDI can be used with any microcontroller(ESP32) that can be coded in MicroPython. <br>
 To flash MicroPython into Pico W, this [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/3) could be followed. After flashing MicroPython, the provided scripts should be uploded into Pico W from [here](https://github.com/momeryigit/ME462-MIDI/tree/omar-test/sarp-esp).
+
 ### API
+Midibot's API is open-source and published on PYPI (see the latest version [here](https://pypi.org/project/romer-midibot/)). It requires Python 3.6 or newer and `pyserial`.
+
+To install `pyserial`, you can use:
+```bash
+pip install pyserial
+```
+
+To install `romer-midibot`, you can use:
+```bash
+pip install romer-midibot
+```
+
+This API is designed to connect to, control, and get readings from Midibot using Python. First, import the `DifferentialDriveRobot` class:
+```python
+from romer_midibot import DifferentialDriveRobot as Robot
+```
+
+To initialize a robot class:
+```python
+robot = Robot(serial_port="replace_with_your_serial_port")
+```
+
+#### The arguments are as follows:
+- **`serial_port` (str)**: Serial port on PC or Raspberry Pi for connecting to the robot.
+- **`baudrate` (int, optional)**: Baud rate for serial communication. Defaults to 115200.
+- **`timeout` (int, optional)**: Timeout in seconds for communication operations. Defaults to 1.
+- **`ip` (str, optional)**: IP address of Pico for socket communication. Defaults to "192.168.137.28".
+- **`config_file` (str, optional)**: Path to the config.json file. Defaults to None.
+- **`socket_port` (int, optional)**: Port for socket communication on PC or Raspberry Pi. Defaults to 8080.
+- **`stepper_ids` ([int], optional)**: Integer array of stepper motor IDs. Defaults to [1, 2].
+- **`u_ids` ([int], optional)**: Integer array of ultrasonic sensors. Defaults to [1, 2, 3, 4].
+- **`b_ids` ([int], optional)**: Integer array of bumper sensors. Defaults to [1, 2, 3, 4].
+- **`imu_connected` (bool, optional)**: Whether IMU is connected. Defaults to False.
+- **`u_median_filter_len` (int, optional)**: Length of median filter window. Defaults to 3.
+- **`default_emergency_behavior` (bool, optional)**: Default behavior of bumper switches coded on Pico. Defaults to True. Change to False if custom behavior is desired. Bumper switches will be polled for data if enabled.
+
+To initialize the robot API, there are two methods:
+1. Manually enter parameters into the class initializer.
+2. Use a config file.
+
+* **1**: To initialize by manually entering parameters, keep `config_file` as `None` and modify the other default parameters as desired. The API enables/disables robot peripherals as defined by initialized parameters from the user, which will be merged with a default [config_file](https://github.com/momeryigit/ME462-MIDI/blob/main/romer_midibot/romer_midibot/default_configs.py) to send to the Pi Pico.
+
+* **2**: To use a config file, ignore the other parameters, and provide the path to your `config_file.json`. It should be similar to [this](https://github.com/momeryigit/ME462-MIDI/blob/main/romer_midibot/romer_midibot/default_config.json). Example:
+```python
+robot = Robot(serial_port="COM6", config_file=r"path/to/your/config/file")
+```
+
+Once your robot is initialized, you can connect via serial or socket (still in development) as follows:
+```python
+robot.connect(connection_type="serial")
+```
+```python
+robot.connect(connection_type="socket")
+```
+Given that the Pi Pico is running and waiting for a connection, handshakes will be exchanged, and the config file will be sent to the Pico where it will initialize from it. If all this is successful, you are ready to send commands to the robot and receive data from it. The API will start a thread just to poll serial or socket ports and manage received data.
+
+#### Robot Commands
+* To set a data callback function that will be called whenever data is received:
+```python
+robot.set_data_callback(callback)
+```
+  - **`callback`**: Callback function called with raw data, whenever received from serial. Keep it low cost to prevent lag in data polling.
+
+* To manually send a command to the robot:
+```python
+robot.send_command(command)
+```
+  - **`command`**: Command string sent to Pico.
+
+* To send a pause command:
+```python
+robot.send_pause_command()
+```
+This stops all the robot's movements and data sending until either a continue or re-config command is received.
+
+* To send a continue command:
+```python
+robot.send_continue_command()
+```
+
+* To disconnect from the robot:
+```python
+robot.disconnect()
+```
+
+* To configure the Pico with the sensor and motor configuration:
+```python
+robot.pico_config()
+```
+
+* To reconfigure the Pico with a new configuration file:
+```python
+robot.pico_reconfig(config_file)
+```
+  - **`config_file`**: Path to the new configuration file.
+
+* To set the number of ticks and duration for the left and right wheels of the robot:
+```python
+robot.set_ticks_duration(left_ticks, right_ticks, duration_l, duration_r)
+```
+  - **`left_ticks`**: Number of ticks for the left wheel.
+  - **`right_ticks`**: Number of ticks for the right wheel.
+  - **`duration_l`**: Duration for the left wheel to complete the ticks. In s
+  - **`duration_r`**: Duration for the right wheel to complete the ticks. In m
+
+* To set the distance for each wheel and the duration to reach the distance:
+```python
+robot.set_distance_duration(left_distance, right_distance, duration_l, duration_r)
+```
+  - **`left_distance`**: Distance for the left wheel. In m
+  - **`right_distance`**: Distance for the right wheel. In m
+  - **`duration_l`**: Duration for the left wheel to reach the distance. In s
+  - **`duration_r`**: Duration for the right wheel to reach the distance. In s
+
+* To set the speed of the left and right wheels of the robot:
+```python
+robot.set_speed(left_speed, right_speed)
+```
+  - **`left_speed`**: Speed, in frequency, of the left wheel.
+  - **`right_speed`**: Speed, in frequency, of the right wheel.
+
+* To move the robot forward for a specified duration:
+```python
+robot.move_forward(duration=1, speed=500)
+```
+  - **`duration`**: Duration, in seconds, to move forward. 
+  - **`speed`**: Speed, frequency, at which to move forward.
+
+* To rotate the robot at a given speed in a given direction for a set duration:
+```python
+robot.rotate(duration=5, speed=800, direction="cw")
+```
+  - **`duration`**: Duration to rotate. In seconds
+  - **`speed`**: Speed at which to rotate. In frequency
+  - **`direction`**: Direction to rotate ("cw" for clockwise, "ccw" for counterclockwise).
+
+* To convert desired linear and angular speeds to wheel frequencies and set the robot speed:
+```python
+robot.send_twist(linear_speed, angular_speed)
+```
+  - **`linear_speed`**: Linear speed. In m/s
+  - **`angular_speed`**: Angular speed. In rad/s
+
+* To stop the robot:
+```python
+robot.stop()
+```
+
+* To immediately stop the robot:
+```python
+robot.emergency_stop()
+```
+
+* To turn off the LEDs on the robot:
+```python
+robot.turn_leds_off()
+```
+
+* To fill all LEDs with a given color:
+```python
+robot.fill_leds(color)
+```
+  - **`color`**: Color to fill the LEDs with. RGB tuple (100, 20, 20) for example
+
+* To set the color of a single LED pixel:
+```python
+robot.set_led_pixel(np_id, pixel_index, color)
+```
+  - **`np_id`**: ID of the neopixel strip.
+  - **`pixel_index`**: Index of the LED pixel.
+  - **`color`**: Color to set the LED pixel. RGB tuple (100, 20, 20) for example
+
+* To get sensor data from the robot (default is ultrasound sensor data):
+```python
+robot.get_sensor_data(sensor_type="u")
+```
+  - **`sensor_type`**: Type of sensor data to get ("u": ultrasonic, "b": bumper, "i", imu).
+
+* To request the current status of the robot:
+```python
+robot.get_status()
+```
+
+* Destructor to stop the robot and disconnect on deletion:
+```python
+del robot
+```
+
+Be sure to send disconnect command before unplugging the pico. Refer to examples or demos for example uses of the API.
 
 
 
