@@ -11,13 +11,9 @@
 
 
 <p align="center">
-<img src="https://github.com/Bayrakt4rdem/MIDI_ROBOT/blob/main/Pictures/ASSEMBLY_EB_alternative%20v1121.png" width=70% height=70%>
+<img src="https://github.com/Bayrakt4rdem/MIDI_ROBOT/blob/main/Pictures/combined2.png" width=100% height=100%>
 </p>
 
-<p align="center">
-<img src="https://github.com/Bayrakt4rdem/MIDI_ROBOT/blob/main/Pictures/ASSEMBLY_EB_alternative_2024-Jun-29_01-01-18AM-000_CustomizedView5368189858_png_alpha.png
-" width=70% height=70%>
-</p>
 
 ## Motivation of the Project
 
