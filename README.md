@@ -207,7 +207,7 @@ Second option: Fabricate the PCB as a two layer one. <br>
 ### Installing Guide
 This project uses a Raspberry Pi 4b as the main computer of the robot. Flash the latest Raspberry Pi OS 64-bit version onto your sd card. We recommend using the **PiImager**. Make sure to configure your image to your needs (enable SSH, set wlan key and password, setup username and password). Flash the sd card, insert it into your Pi and power it on. Now, to **SSH** into RPi4, open up a terminal on the PC and use the command `ssh pi@<yourusername>.local`. The console will ask for your password, enter it. In order to setup the Pi, you should clone the software files repo into your home adress using `git clone`, after the files are cloned go inside the `Raspi_files`. Inside the `Raspi_Files` folder give execution rights to the setup file using, `chmod +x setup_pi.bash` and then relax :) the script will take care of all the Pi configuration, docker installation, building of the docker container, adding necessesary configs modifications etc. Feel free to inspect the bash script. <br>
 **Important Note:** this script adds a function to your `.bashrc` such that everytime you ssh into your Pi the project docker container opens up. You can modify your `.bashrc` file to change this behaviour as needed.  <br>
-After the script the Pi will reset itself, you can just go inside `romer_midibot/Examples (MIGHT CHANGE)` and try some examples. Provided that you pip installed the projects python package. See below for that. <br>
+After the script the Pi will reset itself, you can just go inside `Examples` and try some examples. Provided that you pip installed the projects python package. See below for that. <br>
 ### Why Use Docker?
 We have opted with using a Docker image because it allows for end-users like you to get right into the action with a ready to use image with all required dependencies of our project pre built into it. One more advantage of this is even if you are not running on a RPi 4 you can still use the Dockerfile provided in **Docker_files** folder to build the ready to use image and get started on whatever software you are running. If you want to add functionality just modify the docker file and rebuild it again.
 <br>
@@ -406,6 +406,11 @@ del robot
 ```
 
 Be sure to send disconnect command before unplugging the pico. Refer to examples or demos for example uses of the API.
+
+## Trying out the ROS nodes
+Midibot comes with some essentials to get you starting on using ROS2 on midibot. The provided docker container is ROS2 ready, all you have to do is go inside the `dev_ws` folder and run `colcon build --symlink-install`. This will build the source files and ready up your systen for testing. After build is complete make sure to source the enviorement by using `source install/setup.bash` (.bash/.zsh depending on the terminal you are using). This command essentially includes our ROS2 packages in that current terminal session. The core ROS installation is sourced in every terminal since `source /opt/ros/iron/setup.bash` is included inside the .bashrc file of the docker image. The command simply overlays our package contents over the core ROS2 installation. <br>
+After sourcing you can get into testing. Simply run the launch file for RPi using `ros2 launch midi_bringup pi.launch.py`, this runs the node for serial communication and the lidar if given as an argument `ros2 launch your_package pi.launch.py lidar:=true`. Then on your PC again source the ROS2 enviorement and run `ros2 launch midi_bringup drive.launch.py`. This sets up the PC side nodes, opens Rviz and sets up the controller nodes. Then by connecting an xbox controller to your machine you can control the robot using the controller. <br>
+
 
 
 
