@@ -251,10 +251,115 @@ After the script the Pi will reset itself, you can just go inside `Examples` and
 ### Why Use Docker?
 We have opted with using a Docker image because it allows for end-users like you to get right into the action with a ready to use image with all required dependencies of our project pre built into it. One more advantage of this is even if you are not running on a RPi 4 you can still use the Dockerfile provided in **Docker_files** folder to build the ready to use image and get started on whatever software you are running. If you want to add functionality just modify the docker file and rebuild it again.
 <br>
+
 ### Rasberry Pi Pico/ESP
 MIDI has Raspberry Pi Pico W microcontroller. MIDI can be used with any microcontroller(ESP32) that can be coded in MicroPython. <br>
 To flash MicroPython into Pico W, this [tutorial](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/3) could be followed. After flashing MicroPython, the provided scripts should be uploded into Pico W from [here](https://github.com/momeryigit/ME462-MIDI/tree/omar-test/sarp-esp).
 
+#### Pico Side Command Handler
+
+This document explains the different commands handled by the `command_handler` function on the Pico microcontroller. Each command is parsed and executed to control various components like stepper motors, Neopixel LEDs, and other functionalities.
+
+##### Command Format
+
+Commands are received as a list (`msg`) where:
+- `msg[0]`: Command identifier (e.g., `"s"`, `"t"`, `"np"`, `"h"`, `"PAUSE"`, `"CONTINUE"`, `"EMERGENCY_STOP"`, `"re-config"`).
+
+#### Supported Commands:
+
+##### Stepper Motor Commands
+
+1. **Drive Stepper at a Frequency**
+    - Command: `"s l 500"`
+    - Description: Drives the specified stepper at a given frequency.
+    - `msg[1]`: Stepper identifier (`"l"` for left, `"r"` for right).
+    - `msg[2]`: Frequency in Hz.
+    - Example: `"s l 500"` drives the left stepper at 500 Hz.
+
+2. **Drive Stepper for a Number of Ticks in a Duration**
+    - Command: `"t r 100 5"`
+    - Description: Drives the specified stepper for a certain number of ticks within a given duration.
+    - `msg[1]`: Stepper identifier (`"l"` for left, `"r"` for right).
+    - `msg[2]`: Number of ticks.
+    - `msg[3]`: Duration in seconds.
+    - Example: `"t r 100 5"` drives the right stepper 100 ticks in 5 seconds.
+
+###### Neopixel LED Commands
+
+1. **Turn Off All Neopixels**
+    - Command: `"np off"`
+    - Description: Turns off all Neopixel LEDs.
+
+2. **Fill All Neopixels with a Color**
+    - Command: `"np fill 100 0 0"`
+    - Description: Fills all Neopixels with the specified RGB color.
+    - `msg[2]`: Red value (0-255).
+    - `msg[3]`: Green value (0-255).
+    - `msg[4]`: Blue value (0-255).
+    - Example: `"np fill 100 0 0"` sets all Neopixels to red.
+
+3. **Set Specific Neopixel Color**
+    - Command: `"np set 1 4 0 55 0"`
+    - Description: Sets a specific Neopixel's color.
+    - `msg[2]`: Neopixel strip ID.
+    - `msg[3]`: Pixel index in the strip.
+    - `msg[4]`: Red value (0-255).
+    - `msg[5]`: Green value (0-255).
+    - `msg[6]`: Blue value (0-255).
+    - Example: `"np set 1 4 0 55 0"` sets the 4th pixel of strip 1 to green.
+
+###### Control Commands
+
+1. **Heartbeat Response**
+    - Command: `"h"`
+    - Description: Resets the watchdog timer to keep the system alive.
+
+2. **Pause Operation**
+    - Command: `"PAUSE"`
+    - Description: Pauses all operations until the `CONTINUE` command is received.
+
+3. **Continue Operation**
+    - Command: `"CONTINUE"`
+    - Description: Resumes operations after a `PAUSE`.
+
+4. **Emergency Stop**
+    - Command: `"EMERGENCY_STOP"`
+    - Description: Immediately stops all stepper motors and sets Neopixels to a warning color.
+
+5. **Re-configure Robot**
+    - Command: `"re-config"`
+    - Description: Re-initializes the robot, waiting for a handshake and a new configuration file.
+    - Note: Must send the `PAUSE` command before re-configuring.
+
+##### Usage Example
+
+Here is an example of how the `command_handler` might be used in a script:
+
+```python
+# Example usage of command_handler
+msg = ["s", "l", "500"]
+
+msg = ["np", "fill", "100", "0", "0"]
+
+msg = ["PAUSE"]
+
+msg = ["CONTINUE"]
+```
+
+##### Function Parameters
+
+- `comm`: An instance of the `SerialComm` class for communication.
+- `msg`: List containing the parsed command message.
+- `hb`: An instance of the `Heartbeat` class.
+- `steppers`: An instance of the `Steppers` class.
+- `sensors`: An instance of the `Sensors` class.
+- `neopixels`: An instance of the `NeoPixelStrips` class.
+
+### Notes
+
+- Ensure the `PAUSE` command is sent before the `re-config` command to safely re-initialize the robot.
+- The `GET_STATUS` commands is a placeholder and will be implemented soon.
+- Test the pico commands directly, for example, by using [Thonny](https://thonny.org/).
 
 ### API
 Midibot's API is open-source and published on PYPI (see the latest version [here](https://pypi.org/project/romer-midibot/)). It requires Python 3.6 or newer and `pyserial`.
