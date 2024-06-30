@@ -15,7 +15,7 @@
 </p>
 
 ## Showcase Video
-[![MIDI ROBOT SHOWCASE](https://i.ytimg.com/vi/wqPkPyw_Kpk/hq2.jpg?sqp=-oaymwE2COADEI4CSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBjAKAAuADigIMCAAQARhUIFsoZTAP&rs=AOn4CLBR-pY7R6VJf4IObovYq_YmWu6jzg)](https://youtube.com/shorts/wqPkPyw_Kpk?si=dk5qcGJWPbOAQR7V)
+[![MIDI ROBOT SHOWCASE](https://i.ytimg.com/vi/wqPkPyw_Kpk/hq2.jpg?sqp=-oaymwE2COADEI4CSFXyq4qpAygIARUAAIhCGABwAcABBvABAfgBjAKAAuADigIMCAAQARhUIFsoZTAP&rs=AOn4CLBR-pY7R6VJf4IObovYq_YmWu6jzg)](https://www.youtube.com/watch?v=wqPkPyw_Kpk)
 
 
 ## Motivation of the Project
